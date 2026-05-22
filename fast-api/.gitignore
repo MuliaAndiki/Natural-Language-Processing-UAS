@@ -2,3 +2,4 @@
 venv
 whisper.cpp
 nlp.log
+coqui_utils
