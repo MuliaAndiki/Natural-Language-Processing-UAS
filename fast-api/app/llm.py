@@ -6,12 +6,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-MODEL = "gemini-2.0-flash"
+MODEL = os.getenv('MODEL')
 
 # TODO: Ambil API key dari file .env
 # Gunakan os.getenv("NAMA_ENV_VARIABLE") untuk mengambil API Key dari file .env.
 # Pastikan di file .env terdapat baris: GEMINI_API_KEY=your_api_key
-GOOGLE_API_KEY = ...
+GOOGLE_API_KEY = os.getenv("GEMINI_API_KEY")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 CHAT_HISTORY_FILE = os.path.join(BASE_DIR, "chat_history.json")
@@ -41,8 +41,8 @@ If you're unsure about an answer, be honest and say that you don't know.
 # Gunakan types.GenerateContentConfig(system_instruction=...) untuk membuat konfigurasi awal.
 # Jika ingin melihat contoh implementasi, baca dokumentasi resmi Gemini:
 # https://github.com/google-gemini/cookbook/blob/main/quickstarts/Get_started.ipynb
-client = ...
-chat_config = ...
+client = genai.Client(api_key=GOOGLE_API_KEY)
+chat_config = types.GenerateContentConfig(system_instruction=system_instruction)
 history_adapter = TypeAdapter(list[types.Content])
 
 # Fungsi untuk menyimpan/memuat riwayat chat
@@ -82,6 +82,7 @@ def generate_response(prompt: str) -> str:
     try:
         response = chat.send_message(prompt)
         save_chat_history(chat)
+        print('ini respone llm:',response)
         return response.text.strip()
     except Exception as e:
         return f"[ERROR] {str(e)}"
