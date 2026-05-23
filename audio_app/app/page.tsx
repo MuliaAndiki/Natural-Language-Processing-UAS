@@ -187,7 +187,6 @@ export default function Home() {
         }}
       />
       <div className="absolute -left-40 top-24 h-72 w-72 rounded-full bg-cyan-500/20 blur-3xl" />
-      <div className="absolute -right-32 top-40 h-80 w-80 rounded-full bg-violet-500/20 blur-3xl" />
 
       <div className="relative mx-auto flex min-h-screen w-full max-w-6xl items-center px-4 py-8 sm:px-6 lg:px-8">
         <div className="grid w-full gap-6 lg:grid-cols-[1.15fr_0.85fr]">
