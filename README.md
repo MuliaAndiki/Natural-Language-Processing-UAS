@@ -187,6 +187,7 @@ application/
 		│   └── chat_history.json
 		├── coqui_utils/           # Coqui model/config assets
 		├── whisper.cpp/           # whisper.cpp source, models, and build artifacts
+        ├── nlp.log             # Result Eksperimen Korpus Audio Training
 		└── requirements.txt
 ```
 
